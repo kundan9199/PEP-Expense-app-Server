@@ -1,0 +1,16 @@
+{
+  "name": "expense-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug":"echo \"Error: no test specified\" && exit 1",
+    "name":"echo \"Prashant is a good boy \" && exit 1",
+    "start":"node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
