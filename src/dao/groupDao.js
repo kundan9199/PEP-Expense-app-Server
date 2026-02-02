@@ -20,8 +20,10 @@ const groupDao = {
         }, { new: true });
     },
 
-    removeMembers: async (...membersEmail) => {
-
+    removeMembers: async (groupId, ...membersEmails) => {
+        return await Group.findByIdAndUpdate(groupId, {
+            $pull: { membersEmail: { $in: membersEmails } }
+        }, { new: true });
     },
 
     getGroupByEmail: async (email) => {
@@ -29,7 +31,8 @@ const groupDao = {
     },
 
     getGroupByStatus: async (status) => {
-
+        // Querying based on the nested paymentStatus.isPaid boolean
+        return await Group.find({ "paymentStatus.isPaid": status });
     },
 
     /**
@@ -39,7 +42,10 @@ const groupDao = {
      * @param {*} groupId 
      */
     getAuditLog: async (groupId) => {
-
+        // Based on your schema, the most relevant "settled" info 
+        // is the date within paymentStatus.
+        const group = await Group.findById(groupId).select('paymentStatus.date');
+        return group ? group.paymentStatus.date : null;
     }
 };
 
