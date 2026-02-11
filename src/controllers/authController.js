@@ -195,3 +195,35 @@ adminId: user.adminId ? user.adminId : user._id,
 };
 
 module.exports = authController;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
