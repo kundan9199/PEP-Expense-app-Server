@@ -22,7 +22,14 @@ const corsOption = {
 const app = express();
 
 app.use(cors(corsOption));
-app.use(express.json()); // Middleware
+// app.use(express.json()); // Middleware
+app.use((request, response, next) => {
+    if(request.originalUrl.startsWith('/payments/webhook')){
+        next();
+    }
+    express.json()(request, response, next);
+});
+
 app.use(cookieParser()); // Middleware
 
 app.use('/auth', authRoutes);
